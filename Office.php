@@ -23,26 +23,21 @@
     require('config/config.php');
     require('config/db.php');
 
-   $results_per_page = 100;
-
-    $query =  "SELECT * FROM office";
-    $result = mysqli_query($conn, $query);
-    $numberOfResult = mysqli_num_rows($result);
-
-    $number_of_page=ceil($numberOfResult/$results_per_page);
-
-    if(!isset($_GET['page'])){ 
-        $page = 1;
-    }else{
-        $page = $_GET['page'];
-    }
-
-    $page_first_result=($page-1) * $results_per_page;
-    $query = 'SELECT * FROM office ORDER BY name limit '. $page_first_result . ',' . $results_per_page;
-    $result = mysqli_query($conn, $query);
-    $offices = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($conn);
+                if(isset($_POST['submit'])){
+                    
+                    $name =mysqli_real_escape_string($conn,$_POST['name']);
+                    $contactnum =mysqli_real_escape_string($conn,$_POST['contactnum']);
+                    $email =mysqli_real_escape_string($conn,$_POST['email']);
+                    $address =mysqli_real_escape_string($conn,$_POST['address']);
+                    $city =mysqli_real_escape_string($conn,$_POST['city']);
+                    $country =mysqli_real_escape_string($conn,$_POST['country']);
+                    $postal =mysqli_real_escape_string($conn,$_POST['postal']);
+                    $query = "INSERT INTO office (name, contactnum, email, address, city, country, postal) VALUES ('$name','$contactnum','$email','$address','$city','$country','$postal')";
+                    if (mysqli_query($conn, $query)){
+                    }else{
+                        echo 'ERROR:'. mysqli_error($conn);
+                    }
+                }
 
 ?>
     <div class="wrapper">

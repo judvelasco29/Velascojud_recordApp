@@ -17,7 +17,7 @@
                     </a>
                 </li>
                  <li>
-                    <a class="nav-link" href="./user.html">
+                    <a class="nav-link" href="./Employee.php">
                         <i class="nc-icon nc-alien-33"></i>
                         <p>Employee</p>
                     </a>
@@ -26,6 +26,6 @@
                 <li class="nav-item active active-pro">
                     <a class="nav-link active" href="javascript:;">
                         <i class="nc-icon nc-alien-33"></i>
-                        <p>Upgrade Pla</p>
+                        <p>Upgrade Plan</p>
                     </a>
                 </li>
