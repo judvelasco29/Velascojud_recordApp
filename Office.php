@@ -23,21 +23,12 @@
     require('config/config.php');
     require('config/db.php');
 
-                if(isset($_POST['submit'])){
-                    
-                    $name =mysqli_real_escape_string($conn,$_POST['name']);
-                    $contactnum =mysqli_real_escape_string($conn,$_POST['contactnum']);
-                    $email =mysqli_real_escape_string($conn,$_POST['email']);
-                    $address =mysqli_real_escape_string($conn,$_POST['address']);
-                    $city =mysqli_real_escape_string($conn,$_POST['city']);
-                    $country =mysqli_real_escape_string($conn,$_POST['country']);
-                    $postal =mysqli_real_escape_string($conn,$_POST['postal']);
-                    $query = "INSERT INTO office (name, contactnum, email, address, city, country, postal) VALUES ('$name','$contactnum','$email','$address','$city','$country','$postal')";
-                    if (mysqli_query($conn, $query)){
-                    }else{
-                        echo 'ERROR:'. mysqli_error($conn);
-                    }
-                }
+
+    $query="SELECT * FROM office";
+    $result = mysqli_query($conn, $query);
+    $offices = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($conn);
 
 ?>
     <div class="wrapper">
