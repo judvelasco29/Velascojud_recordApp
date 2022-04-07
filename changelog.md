@@ -23,8 +23,8 @@ Direction:
 [/] Setup database configuration.  
 [/] Create page for List of office.
 [/] Create page for List of employees.  
-[x] Create page for List of transactions.  
-[x] Create page for adding office.  
+[/] Create page for List of transactions.  
+[/] Create page for adding office.  
 [x] Create page for adding employee.  
 [x] Create page for adding transactions.  
 [x] Applying pagination to list of office.  

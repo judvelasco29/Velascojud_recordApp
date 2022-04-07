@@ -49,6 +49,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
+                                <br/>
+                                <div class="col-md-12">
+                                    <a href="office-Add.php">
+                                        <button type="submit" class="btn btn-info btn-fill pull-right">Add New Office</button>
+                                    </a>
                                 <div class="card-header ">
                                     <h4 class="card-title">Striped Table with Hover</h4>
                                     <p class="card-category">Here is a subtitle for this table</p>
@@ -92,7 +97,7 @@
                                             <tr>
                                                 <td>4</td>
                                                 <td>Philip Chaney</td>
-                                                <td>$38,735</td>
+                                                <td>38,735</td>
                                                 <td>Korea, South</td>
                                                 <td>Overland Park</td>
                                             </tr>
