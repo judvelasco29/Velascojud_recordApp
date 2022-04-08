@@ -21,14 +21,28 @@
 <body>
 <?php
     require('config/config.php');
-    require('config/db.php');
+require('config/db.php');
 
+$results_per_page = 10;
 
-    $query='SELECT transaction.datelog, transaction.documentcode, transaction.action, transaction.remarks, office.name as office_name, CONCAT(employee.lastname, ",", employee.firstname) as employee_fullname FROM employee, office, transaction WHERE transaction.employee_id=employee.id and transaction.office_id = office.id';
-    $result = mysqli_query($conn, $query);
-    $transactions = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($conn);
+$query =  "SELECT * FROM transaction";
+$result = mysqli_query($conn, $query);
+$number_of_result = mysqli_num_rows($result);
+
+$number_of_page=ceil($number_of_result / $results_per_page);
+
+if(!isset($_GET['page'])){
+    $page = 1;
+}else{
+    $page = $_GET['page'];
+}
+
+$page_first_result=($page-1) * $results_per_page;
+
+$query = 'SELECT CONCAT (employee.lastname,",",employee.firstname) AS employee_fullname, transaction.datelog, transaction.documentcode,transaction.action,transaction.remarks,office.name AS office_name FROM employee, office, transaction WHERE transaction.employee_id=employee.id AND employee.office_id = office.id LIMIT '. $page_first_result . ',' . $results_per_page;
+$result = mysqli_query($conn, $query)or die( mysqli_error($conn));
+$transactions = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_close($conn);
 
 ?>
     <div class="wrapper">
@@ -78,48 +92,19 @@
                                                 <td><?php echo $transaction['office_name']; ?></td>
                                                 <td><?php echo $transaction['employee_fullname']; ?></td>
                                                 <td><?php echo $transaction['remarks']; ?></td>
+                                            </tr>
                                             <?php endforeach ?>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php
+                        for($page=1; $page <= $number_of_page; $page++){
+                            echo '<a href = "Transaction.php?page='.$page .'">' . $page . '</a>';
+                        }
+                    ?>
                 </div>
             </div>
             <footer class="footer">
