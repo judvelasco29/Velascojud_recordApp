@@ -23,11 +23,7 @@
         require('config/config.php');
         require('config/db.php');
 
-        $lastname = '';
-        $firstname = '';
-        $office_id = '';
-        $address = '';
-
+  
         $query = "SELECT * FROM employee WHERE  id =" . $_GET['id'];
 
         $result = $conn->query($query);
