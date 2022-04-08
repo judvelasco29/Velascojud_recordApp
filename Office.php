@@ -54,6 +54,7 @@
                                     <a href="office-Add.php">
                                         <button type="submit" class="btn btn-info btn-fill pull-right">Add New Office</button>
                                     </a>
+                                </div>
                                 <div class="card-header ">
                                     <h4 class="card-title">Striped Table with Hover</h4>
                                     <p class="card-category">Here is a subtitle for this table</p>
