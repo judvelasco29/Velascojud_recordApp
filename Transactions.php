@@ -21,28 +21,38 @@
 <body>
 <?php
     require('config/config.php');
-require('config/db.php');
+    require('config/db.php');
 
-$results_per_page = 10;
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-$query =  "SELECT * FROM transaction";
-$result = mysqli_query($conn, $query);
-$number_of_result = mysqli_num_rows($result);
+    $results_per_page = 10;
 
-$number_of_page=ceil($number_of_result / $results_per_page);
+    $query =  "SELECT * FROM Transaction";
+    $result = mysqli_query($conn, $query);
+    $number_of_result = mysqli_num_rows($result);
 
-if(!isset($_GET['page'])){
-    $page = 1;
-}else{
-    $page = $_GET['page'];
-}
+    $number_of_page=ceil($number_of_result / $results_per_page);
 
-$page_first_result=($page-1) * $results_per_page;
+    if(!isset($_GET['page'])){
+        $page = 1;
+    }else{
+        $page = $_GET['page'];
+    }
 
-$query = 'SELECT CONCAT (employee.lastname,",",employee.firstname) AS employee_fullname, transaction.datelog, transaction.documentcode,transaction.action,transaction.remarks,office.name AS office_name FROM employee, office, transaction WHERE transaction.employee_id=employee.id AND employee.office_id = office.id LIMIT '. $page_first_result . ',' . $results_per_page;
-$result = mysqli_query($conn, $query)or die( mysqli_error($conn));
-$transactions = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_close($conn);
+    $page_first_result=($page-1) * $results_per_page;
+
+    if (strlen($search) > 0) {
+        $query = 'SELECT CONCAT (employee.lastname,",",employee.firstname) as employee_fullname, transaction.datelog, transaction.documentcode,transaction.action, transaction.remarks, office.name as office_name FROM employee, office, transaction WHERE transaction.employee_id = employee.id and employee.office_id = office.id and transaction.documentcode ='. $search .' ORDER BY transaction.documentcode, transaction.datelog LIMIT '.$page_first_result.','.$results_per_page;
+    }
+    else{
+        $query = 'SELECT CONCAT (employee.lastname,",",employee.firstname) as employee_fullname, transaction.datelog, transaction.documentcode,transaction.action,transaction.remarks,office.name as office_name FROM employee, office, transaction WHERE transaction.employee_id=employee.id and employee.office_id = office.id LIMIT '. $page_first_result . ',' . $results_per_page;
+    }
+
+    $result = mysqli_query($conn, $query)or die( mysqli_error($conn));
+
+    $transactions = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    mysqli_close($conn);
 
 ?>
     <div class="wrapper">
@@ -64,6 +74,12 @@ mysqli_close($conn);
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
                                 <br/>
+                                <div class="col-md-12">
+                                    <form action="Transactions.php" method="GET">
+                                        <input type="text" name="search" />
+                                        <input type="submit" value="Search" class="btn btn-info btn-fill" />
+                                    </form>
+                                </div>
                                 <div class="col-md-12">
                                     <a href="transaction-Add.php">
                                         <button type="submit" class="btn btn-info btn-fill pull-right">Add New Transaction</button>
@@ -143,8 +159,7 @@ mysqli_close($conn);
                 </div>
             </footer>
         </div>
-    </div>
-    
+    </div>    
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
