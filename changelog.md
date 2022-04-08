@@ -40,10 +40,13 @@ Direction:
 
 [/] Applying pagination to list of transactions. 
 
+[/] Applying pagination to list of employees.  
+
+
+
 
 
 [x] Applying pagination to list of office.  
-[x] Applying pagination to list of employees.  
 
 [x] Create search feature in list of transactions.  
 [x] Create search feature in list of office. (challenge)  
