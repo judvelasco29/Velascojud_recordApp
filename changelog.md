@@ -33,20 +33,22 @@ Direction:
 [/] Create page for List of transactions.  
 [/] Create page for adding office.  
 
-2022-04-08
+2022-04-08(morning)
 
 [/] Create page for adding employee.  
 [/] Create page for adding transactions. 
+
+2022-04-08(afternoon)
 
 [/] Applying pagination to list of transactions. 
 
 [/] Applying pagination to list of employees.  
 
+[/] Applying pagination to list of office.
 
 
 
-
-[x] Applying pagination to list of office.  
+  
 
 [x] Create search feature in list of transactions.  
 [x] Create search feature in list of office. (challenge)  
