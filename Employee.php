@@ -32,7 +32,7 @@
     $number_of_page=ceil($number_of_result/$results_per_page);
 
     if(!isset($_GET['page'])){
-        $page = 1;
+     $page = 1;
     }else{
         $page = $_GET['page'];
     }
@@ -83,12 +83,12 @@
                                             <th>Office</th>
                                         </thead>
                                         <tbody>
-                                            <?php foreach($employees as $employee) : ?>
+                                           <?php foreach($employees as $employee) : ?>
                                             <tr>
-                                                <td><?php echo $employee['lastname']; ?></td>
-                                                <td><?php echo $employee['firstnasme']; ?></td>
-                                                <td><?php echo $employee['address']; ?></td>
-                                                <td><?php echo $employee['office_name']; ?></td>
+                                            <td><?php echo $employee ['lastname']; ?></td>
+                                            <td><?php echo $employee ['firstname']; ?></td>
+                                            <td><?php echo $employee ['address']; ?></td>
+                                            <td><?php echo $employee ['office_name']; ?></td>
                                             </tr>
                                             <?php endforeach ?>
                 
@@ -100,7 +100,7 @@
                     </div>
                     <?php
                     for($page=1; $page <= $number_of_page; $page++){
-                        echo '<a href="employee.php?page='. $page .'"> '. $page .'</a>';
+                        echo '<a href="Employee.php?page='. $page .'"> '. $page .'</a>';
                     }
                     ?>
                 </div>
