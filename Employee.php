@@ -97,10 +97,15 @@
                                         <tbody>
                                            <?php foreach($employees as $employee) : ?>
                                             <tr>
-                                            <td><?php echo $employee ['lastname']; ?></td>
-                                            <td><?php echo $employee ['firstname']; ?></td>
-                                            <td><?php echo $employee ['address']; ?></td>
-                                            <td><?php echo $employee ['office_name']; ?></td>
+                                                <td><?php echo $employee ['lastname']; ?></td>
+                                                <td><?php echo $employee ['firstname']; ?></td>
+                                                <td><?php echo $employee ['address']; ?></td>
+                                                <td><?php echo $employee ['office_name']; ?></td>
+                                                <td>
+                                                    <a href="employee-Edit.php?id=<?php echo $employee['id']; ?>">
+                                                        <button type="submit" class="btn btn-warning btn-fill pull-right">Edit</button>
+                                                    </a>
+                                                </td>
                                             </tr>
                                             <?php endforeach ?>
                 

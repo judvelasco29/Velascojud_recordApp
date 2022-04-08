@@ -49,10 +49,10 @@ Direction:
 [/] Create search feature in list of transactions.  
 [/] Create search feature in list of office. (challenge)  
 [/] Create search feature in list of employees. (challenge) 
-[/] Edit page for office.
+[/] Edit page for office.  
+[/] Edit page for employees.  
 
-  
-[x] Edit page for employees.  
+
 [x] Edit page for transactions. (challenge)
 
 ***challenge means not included in the video***
