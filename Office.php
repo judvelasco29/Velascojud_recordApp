@@ -108,6 +108,11 @@
                                                 <td><?php echo $office['city']; ?></td>
                                                 <td><?php echo $office['country']; ?></td>
                                                 <td><?php echo $office['postal']; ?></td>
+                                                <td>
+                                                    <a href="office-Edit.php?id=<?php echo $office['id']; ?>">
+                                                        <button type="submit" class="btn btn-warning btn-fill pull-right">Edit</button>
+                                                    </a>
+                                                </td>
                                             </tr>
                                             <?php endforeach ?>
                                             

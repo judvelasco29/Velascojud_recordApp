@@ -41,9 +41,7 @@ Direction:
 2022-04-08(afternoon)
 
 [/] Applying pagination to list of transactions. 
-
 [/] Applying pagination to list of employees.  
-
 [/] Applying pagination to list of office.
 
 20204-08(evening)
@@ -51,11 +49,9 @@ Direction:
 [/] Create search feature in list of transactions.  
 [/] Create search feature in list of office. (challenge)  
 [/] Create search feature in list of employees. (challenge) 
+[/] Edit page for office.
 
-
-
-
-[x] Edit page for office.  
+  
 [x] Edit page for employees.  
 [x] Edit page for transactions. (challenge)
 
